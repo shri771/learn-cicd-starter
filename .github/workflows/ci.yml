@@ -20,3 +20,12 @@ jobs:
 
             - name: Auth Module Test
               run: go test -cover ./...
+
+jobs:
+    style:
+    name: Style
+    runs-on: unbuntu-latest
+
+    steps:
+        -name: Check Formatting
+        run: test -z $(go fmt ./...)
