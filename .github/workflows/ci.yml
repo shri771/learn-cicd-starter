@@ -3,11 +3,10 @@ name: ci
 on:
   pull_request:
     branches: [main]
-
   push:
     branches:
       - main
-      - addtest
+      - addtets
 
 jobs:
   tests:
@@ -23,10 +22,10 @@ jobs:
         with:
           go-version: "1.25.1"
 
-      - name: Auth Module Test
-        run: go test -cover ./...
+      - name: Run unit tests
+        run: go test ./... -cover
 
-      - name: Install Gosec
+      - name: Install gosec
         run: go install github.com/securego/gosec/v2/cmd/gosec@latest
 
       - name: Run gosec
@@ -45,11 +44,11 @@ jobs:
         with:
           go-version: "1.25.1"
 
-      - name: Check Formatting
+      - name: Check formatting
         run: test -z $(go fmt ./...)
 
-      - name: Install StaticCheck
+      - name: Install staticcheck
         run: go install honnef.co/go/tools/cmd/staticcheck@latest
 
-      - name: Check Linting
+      - name: Run staticcheck
         run: staticcheck ./...
