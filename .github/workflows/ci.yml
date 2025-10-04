@@ -4,6 +4,11 @@ on:
   pull_request:
     branches: [main]
 
+  push:
+    branches:
+      - main
+      - addtest
+
 jobs:
   tests:
     name: Tests
@@ -36,3 +41,9 @@ jobs:
 
       - name: Check Formatting
         run: test -z $(go fmt ./...)
+
+      - name: Install StaticCheck
+        run: go install honnef.co/go/tools/cmd/staticcheck@latest
+
+      - name: Check Linting
+        run: staticcheck ./...
