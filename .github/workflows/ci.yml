@@ -3,8 +3,10 @@ name: ci
 on:
     pull_request:
         branches:
-            # - main
+            - main
             - addtets
+    push:
+        branches: [main]
 
 jobs:
     tests:
