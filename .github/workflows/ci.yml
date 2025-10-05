@@ -64,8 +64,6 @@ jobs:
                       cache-b69fdd6-${{ runner.os }}-
                       cache-b69fdd6-
 
-                      # Prime cache step - shows cache hit/miss result
-
             - name: prime-cache-b69fdd6
               run: |
                   if [ "${{ steps.cache-dependencies.outputs.cache-hit }}" == "true" ]; then
