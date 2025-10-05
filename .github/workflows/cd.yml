@@ -39,7 +39,7 @@ jobs:
               run: "gcloud info"
 
               ## Update Docker image
-            - name: Update Image
+            - name: Build and push Docker image
               run: gcloud builds submit --tag us-central1-docker.pkg.dev/notely-474107/notely-ar-repo/notely:latest
 
               # Run Migrations
