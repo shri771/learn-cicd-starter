@@ -1,7 +1,7 @@
 name: cd
 
 on:
-    pull_request:
+    push:
         branches: [main]
 
 jobs:
@@ -38,13 +38,13 @@ jobs:
             - name: "Use gcloud CLI"
               run: "gcloud info"
 
-              # Run Migrations
-            - name: Run Migrations
-              run: ./scripts/migrateup.sh
-
               ## Update Docker image
             - name: Update Image
               run: gcloud builds submit --tag us-central1-docker.pkg.dev/notely-474107/notely-ar-repo/notely:latest
+
+              # Run Migrations
+            - name: Run Migrations
+              run: ./scripts/migrateup.sh
 
               ## Deploy
             - name: Deploy to Cloud Run
