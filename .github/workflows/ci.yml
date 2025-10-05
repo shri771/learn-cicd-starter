@@ -2,8 +2,6 @@ name: ci
 
 on:
     pull_request:
-        branches: [main]
-    push:
         branches:
             - main
             - addtets
@@ -52,6 +50,3 @@ jobs:
 
             - name: Run staticcheck
               run: staticcheck ./...
-
-            - name: Deploy to Cloud Run
-              run: gcloud run deploy notely --image REGION-docker.pkg.dev/PROJECT_ID/REPO_NAME/IMAGE:TAG --region REGION --allow-unauthenticated --project PROJECT_ID --max-instances=4
